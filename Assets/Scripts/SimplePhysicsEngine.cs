@@ -13,6 +13,9 @@ public class SimplePhysicsEngine : MonoBehaviour
     private ForceVisualizer _forceVisualizer;
     private Vector3 _netForce;
 
+    [SerializeField] private Vector3 wind;
+
+
 
     private void Start()
     {
@@ -24,17 +27,22 @@ public class SimplePhysicsEngine : MonoBehaviour
         _netForce = Vector3.zero;
         _forceVisualizer.ClearForces();
 
+        ApplyForce(wind, Color.blue, "Wind");
+
         if (_isGravity )
         {
             Vector3 gravity = Physics.gravity * _mass;
             ApplyForce(gravity, Color.red, "Gravity");
         }
+
+        _forceVisualizer.AddForce(_netForce, Color.green, name);
+
     }
 
     private void ApplyForce(Vector3 vector, Color colorForce, string name)
     {
         _netForce += vector;
-        _forceVisualizer.AddForce(_netForce, colorForce, name);
+        _forceVisualizer.AddForce(vector, colorForce, name);
     }
 
 }

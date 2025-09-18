@@ -15,12 +15,18 @@ public class ForceVisualizer : MonoBehaviour
             Vector3 end = transform.position + force.Vector;
 
             Gizmos.DrawLine(start, end);
+
+#if UNITY_EDITOR
+        UnityEditor.Handles.Label(end+Vector3.up, force.Name);
+#endif
         }
     }
 
     public void AddForce(Vector3 vector, Color colorForce, string name) => _forces.Add(new Force(vector, colorForce, name));
 
     public void ClearForces() => _forces.Clear();
+
+
 }
 
 
