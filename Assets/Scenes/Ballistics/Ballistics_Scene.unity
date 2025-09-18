@@ -350,6 +350,7 @@ GameObject:
   - component: {fileID: 1313165225}
   - component: {fileID: 1313165226}
   - component: {fileID: 1313165227}
+  - component: {fileID: 1313165228}
   m_Layer: 0
   m_Name: Parent
   m_TagString: Untagged
@@ -496,6 +497,22 @@ MonoBehaviour:
   _lineWidth: 0.2
   _lineLength: 0.2
   _timeStep: 0.1
+--- !u!114 &1313165228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1313165224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23b3eb2a49872ca42a39cb06ef861789, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _launchPoint: {fileID: 1205405654}
+  _muzzleVelocity: 20
+  _muzzleAngle: 20
+  _shootRound: {fileID: 6495500804832645510, guid: 9d8c3bb2cba0428438cb223c91b07bf8, type: 3}
 --- !u!1001 &1464238722
 PrefabInstance:
   m_ObjectHideFlags: 0

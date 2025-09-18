@@ -12,6 +12,7 @@ public class TraectoryRender : MonoBehaviour
 
     [SerializeField] private float _timeStep = 0.1f;
 
+
     private LineRenderer _lineRenderer;
 
     private void Awake() => InitialiseLineRenderer();
