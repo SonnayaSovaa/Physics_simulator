@@ -15,6 +15,8 @@ public class SimplePhysicsEngine : MonoBehaviour
 
     [SerializeField] private Vector3 wind;
 
+    private Vector3 _velocity = Vector3.zero;
+
 
 
     private void Start()
@@ -35,8 +37,20 @@ public class SimplePhysicsEngine : MonoBehaviour
             ApplyForce(gravity, Color.red, "Gravity");
         }
 
-        _forceVisualizer.AddForce(_netForce, Color.green, name);
+        Vector3 acceleration = _netForce / _mass;
 
+        IntegrateMotion(acceleration);
+
+
+
+        _forceVisualizer.AddForce(_netForce, Color.green, "Main");
+
+    }
+
+    private void IntegrateMotion(Vector3 acceleration)
+    {
+        _velocity += acceleration * Time.fixedDeltaTime;
+        transform.position = _velocity * Time.fixedDeltaTime;
     }
 
     private void ApplyForce(Vector3 vector, Color colorForce, string name)
