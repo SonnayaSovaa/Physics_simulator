@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Phisycs : MonoBehaviour
+public class ForceVisualizer : MonoBehaviour
 { 
     [SerializeField] private List<Force> _forces = new();
 
@@ -17,6 +17,10 @@ public class Phisycs : MonoBehaviour
             Gizmos.DrawLine(start, end);
         }
     }
+
+    public void AddForce(Vector3 vector, Color colorForce, string name) => _forces.Add(new Force(vector, colorForce, name));
+
+    public void ClearForces() => _forces.Clear();
 }
 
 
