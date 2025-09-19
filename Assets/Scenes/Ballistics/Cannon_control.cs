@@ -109,6 +109,15 @@ public partial class @Cannon_control: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Fire"",
+                    ""type"": ""Button"",
+                    ""id"": ""a740862f-ce76-4517-948a-3b1a6953e5da"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -181,7 +190,7 @@ public partial class @Cannon_control: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""up"",
                     ""id"": ""8cb6fbdd-592c-48d7-9865-4506899d1a95"",
-                    ""path"": ""<Keyboard>/q"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -192,13 +201,24 @@ public partial class @Cannon_control: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""down"",
                     ""id"": ""7e95ac64-f219-41b5-8896-dd75e58ab134"",
-                    ""path"": ""<Keyboard>/x"",
+                    ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Y rotation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b848faab-eb82-4f94-ac9a-5b5f5b7380fb"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -209,6 +229,7 @@ public partial class @Cannon_control: IInputActionCollection2, IDisposable
         m_Cannon = asset.FindActionMap("Cannon", throwIfNotFound: true);
         m_Cannon_Moving = m_Cannon.FindAction("Moving", throwIfNotFound: true);
         m_Cannon_Yrotation = m_Cannon.FindAction("Y rotation", throwIfNotFound: true);
+        m_Cannon_Fire = m_Cannon.FindAction("Fire", throwIfNotFound: true);
     }
 
     ~@Cannon_control()
@@ -291,6 +312,7 @@ public partial class @Cannon_control: IInputActionCollection2, IDisposable
     private List<ICannonActions> m_CannonActionsCallbackInterfaces = new List<ICannonActions>();
     private readonly InputAction m_Cannon_Moving;
     private readonly InputAction m_Cannon_Yrotation;
+    private readonly InputAction m_Cannon_Fire;
     /// <summary>
     /// Provides access to input actions defined in input action map "Cannon".
     /// </summary>
@@ -310,6 +332,10 @@ public partial class @Cannon_control: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Cannon/Yrotation".
         /// </summary>
         public InputAction @Yrotation => m_Wrapper.m_Cannon_Yrotation;
+        /// <summary>
+        /// Provides access to the underlying input action "Cannon/Fire".
+        /// </summary>
+        public InputAction @Fire => m_Wrapper.m_Cannon_Fire;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -342,6 +368,9 @@ public partial class @Cannon_control: IInputActionCollection2, IDisposable
             @Yrotation.started += instance.OnYrotation;
             @Yrotation.performed += instance.OnYrotation;
             @Yrotation.canceled += instance.OnYrotation;
+            @Fire.started += instance.OnFire;
+            @Fire.performed += instance.OnFire;
+            @Fire.canceled += instance.OnFire;
         }
 
         /// <summary>
@@ -359,6 +388,9 @@ public partial class @Cannon_control: IInputActionCollection2, IDisposable
             @Yrotation.started -= instance.OnYrotation;
             @Yrotation.performed -= instance.OnYrotation;
             @Yrotation.canceled -= instance.OnYrotation;
+            @Fire.started -= instance.OnFire;
+            @Fire.performed -= instance.OnFire;
+            @Fire.canceled -= instance.OnFire;
         }
 
         /// <summary>
@@ -413,5 +445,12 @@ public partial class @Cannon_control: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnYrotation(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Fire" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnFire(InputAction.CallbackContext context);
     }
 }

@@ -7,7 +7,8 @@ using System.Collections;
 
 public class BallisticCalculator : MonoBehaviour
 {
-    
+    private Cannon_control _control;
+
     [SerializeField] private Transform _launchPoint;
     [SerializeField] private float _muzzleVelocity=20f;
 
@@ -23,24 +24,27 @@ public class BallisticCalculator : MonoBehaviour
     private float _airDencity=1.255f;
     private Rigidbody _rigidbody;
     private Vector3 _wind= Vector3.zero;
+    private Vector3 v0;
+
+    [SerializeField] private ParticleSystem boom;
+
+    private void Awake()
+    {
+        _control = new Cannon_control();
+        _control.Cannon.Fire.started += ctx => Fire(v0);
+        
+        _traectoryRender = GetComponent<TraectoryRender>();
+
+    }
 
     
-
-
-    void Start()
-    {
-        _traectoryRender = GetComponent<TraectoryRender>();
-    }
 
     void Update()
     {
         if (_launchPoint == null) return;
 
-        Vector3 v0 = CalculateVelocity(_muzzleAngle);
+        v0 = CalculateVelocity(_muzzleAngle);
         _traectoryRender.DrawVacuum(_launchPoint.position, v0);
-
-        if (Input.GetKeyDown("space"))
-            Fire(v0);
 
     }
 
@@ -48,7 +52,8 @@ public class BallisticCalculator : MonoBehaviour
     {
         if (_shootRound == null) return;
         GameObject newShootRound = Instantiate(_shootRound.gameObject, _launchPoint.position, Quaternion.identity);
-
+        
+        boom.Play();
         QuadricDrag quadricDrag = newShootRound.GetComponent<QuadricDrag>();
         quadricDrag.SetPhysicalParams(_mass, _radius, _dragCoefficient, _airDencity, _wind, initialVelocity);
     }
@@ -59,8 +64,17 @@ public class BallisticCalculator : MonoBehaviour
         float vy = _muzzleVelocity*Mathf.Sin(angle*Mathf.Deg2Rad);
 
         return _launchPoint.forward*vx + _launchPoint.up*vy;
+        
+    }
+    
+    private void OnEnable()
+    {
+        _control.Enable();
+    }
 
-
+    private void OnDisable()
+    {
+        _control.Disable();
     }
 
 }

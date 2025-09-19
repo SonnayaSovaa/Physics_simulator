@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e79920c8-e050-4a6c-a50d-d61a269701a0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Physics_simulator/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Physics_simulator/.idea/projectSettingsUpdater.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Physics_simulator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Physics_simulator/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ballistics/BallisticCalculator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Ballistics/BallisticCalculator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ballistics/Ballistics_Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Ballistics/Ballistics_Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ballistics/Cannon_control.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Ballistics/Cannon_control.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ballistics/Cannon_control.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Ballistics/Cannon_control.inputactions" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +91,7 @@
       <updated>1758186924901</updated>
       <workItem from="1758186927506" duration="10000" />
       <workItem from="1758186965753" duration="258000" />
-      <workItem from="1758321395947" duration="1742000" />
+      <workItem from="1758321395947" duration="2843000" />
     </task>
     <servers />
   </component>
