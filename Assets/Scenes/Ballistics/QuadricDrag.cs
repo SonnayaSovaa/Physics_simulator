@@ -15,7 +15,11 @@ public class QuadricDrag : MonoBehaviour
     void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        
+        
     }
+
+
 
     void FixedUpdate()
     {

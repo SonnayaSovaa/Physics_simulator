@@ -60,7 +60,7 @@ public class TraectoryRender : MonoBehaviour
             float speed = vReal.magnitude;
 
             Vector3 drag = -0.5f * _airDencity * _area* _dragCoefficient * speed*  Vector3.one;
-            Debug.Log(drag);
+            // Debug.Log(drag);
             
             Vector3 newPosition = startPosition + t*startVelocity + 0.5f*t*t*Physics.gravity + drag;
 

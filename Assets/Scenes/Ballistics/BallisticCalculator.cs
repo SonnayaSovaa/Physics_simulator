@@ -27,6 +27,8 @@ public class BallisticCalculator : MonoBehaviour
 
     private QuadricDrag quadricDrag;
 
+    [SerializeField] private Statistic statistic;
+
 
     private float _mass ;
     private float _radius;
@@ -83,6 +85,11 @@ public class BallisticCalculator : MonoBehaviour
         _mass = Random.Range(minMass, maxMass);
     }
     
+    void Destroying()
+    {
+        statistic.NewMiss();
+    }
+    
 
     void Fire(Vector3 initialVelocity)
     {
@@ -92,9 +99,11 @@ public class BallisticCalculator : MonoBehaviour
         quadricDrag.SetPhysicalParams(_mass, _radius, _dragCoefficient, _airDencity, _wind, initialVelocity);
         //Debug.Log(_rigidbody.mass);
         boom.Play();
-        Destroy(quadricDrag.gameObject, 5f);
         
         ShootInstance();
+        Destroy(quadricDrag.gameObject, 5f);
+        
+        Invoke("Destroying", 5f);
     }
 
     Vector3 CalculateVelocity(float angle)

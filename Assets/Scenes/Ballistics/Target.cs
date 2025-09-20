@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Target : MonoBehaviour
 {
@@ -13,6 +15,27 @@ public class Target : MonoBehaviour
 
     private Rigidbody _rigidbody;
 
+    public Statistic statistic;
+
+    [SerializeField] private GameObject child;
+    private Material mat;
+
+    public void SetStats(Statistic statistic)
+    {
+        statistic = statistic;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<QuadricDrag>())
+        {
+            statistic.NewHit();
+
+            mat.color = Color.black;
+        }
+        
+    }
+
 
     private void OnEnable()
     {
@@ -22,5 +45,8 @@ public class Target : MonoBehaviour
             0, Random.Range(minVelocity, maxVelocity));
         
         transform.localScale*=Random.Range(minRadius, maxRadius);
+
+        mat = child.GetComponent<MeshRenderer>().material;
+
     }
 }
