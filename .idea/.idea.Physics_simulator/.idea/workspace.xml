@@ -8,9 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Physics_simulator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Physics_simulator/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ballistics/BallisticCalculator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Ballistics/BallisticCalculator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ballistics/Ballistics_Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Ballistics/Ballistics_Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ballistics/QuadricDrag.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Ballistics/QuadricDrag.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ballistics/Round_shot.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Ballistics/Round_shot.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ballistics/TraectoryRender.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Ballistics/TraectoryRender.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ballistics/Particle1 1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Ballistics/Particle1 1.mat" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +20,8 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/../AR_Praktika/Assets/Scripts/Spawner.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scenes/Ballistics/Target.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scenes/Ballistics/TargetSpawner.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
@@ -96,7 +96,7 @@
       <workItem from="1758186927506" duration="10000" />
       <workItem from="1758186965753" duration="258000" />
       <workItem from="1758321395947" duration="3176000" />
-      <workItem from="1758373841089" duration="5854000" />
+      <workItem from="1758373841089" duration="7394000" />
     </task>
     <servers />
   </component>

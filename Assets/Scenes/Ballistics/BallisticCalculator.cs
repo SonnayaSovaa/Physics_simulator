@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using NUnit.Framework.Constraints;
 
 
 [RequireComponent(typeof(TraectoryRender))]
@@ -70,7 +71,9 @@ public class BallisticCalculator : MonoBehaviour
 
     void ShootInstance()
     {
+        //if (_shootRound == null) return;
         GameObject newShootRound = Instantiate(_shootRound, _launchPoint.position, Quaternion.identity);
+        newShootRound.transform.parent = _launchPoint;
         _rigidbody = newShootRound.GetComponent<Rigidbody>();
         
         
@@ -83,11 +86,13 @@ public class BallisticCalculator : MonoBehaviour
 
     void Fire(Vector3 initialVelocity)
     {
-        if (_shootRound == null) return;
+
+        _rigidbody.transform.parent = null;
         _rigidbody.isKinematic = false;
         quadricDrag.SetPhysicalParams(_mass, _radius, _dragCoefficient, _airDencity, _wind, initialVelocity);
         //Debug.Log(_rigidbody.mass);
         boom.Play();
+        Destroy(quadricDrag.gameObject, 5f);
         
         ShootInstance();
     }
