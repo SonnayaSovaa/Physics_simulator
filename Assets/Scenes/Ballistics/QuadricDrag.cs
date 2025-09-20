@@ -4,7 +4,7 @@ using UnityEngine;
 public class QuadricDrag : MonoBehaviour
 {
 
-    private float _mass;
+    
     private float _radius;
     private float _dragCoefficient;
     private float _airDencity;
@@ -20,6 +20,7 @@ public class QuadricDrag : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 vReal = _rigidbody.linearVelocity - _wind;
+        
         float speed = vReal.magnitude;
 
         Vector3 drag = -0.5f * _airDencity * _dragCoefficient * _area * speed * vReal;

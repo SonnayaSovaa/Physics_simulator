@@ -5371,7 +5371,11 @@ MonoBehaviour:
   _launchPoint: {fileID: 1205405654}
   _muzzleVelocity: 20
   _muzzleAngle: 20
-  _shootRound: {fileID: 8498090455801986967, guid: 4f72f90b8314abf41aa995cfb5e54965, type: 3}
+  _shootRound: {fileID: 5776942109015575797, guid: 4f72f90b8314abf41aa995cfb5e54965, type: 3}
+  minRadius: 0.1
+  maxRadius: 0.1
+  minMass: 1
+  maxMass: 1.532
   boom: {fileID: 1323353419}
 --- !u!114 &1464238731
 MonoBehaviour:

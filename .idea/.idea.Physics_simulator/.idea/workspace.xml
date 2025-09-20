@@ -8,8 +8,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Physics_simulator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Physics_simulator/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ballistics/BallisticCalculator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Ballistics/BallisticCalculator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ballistics/Ballistics_Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Ballistics/Ballistics_Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ballistics/Cannon_control.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Ballistics/Cannon_control.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ballistics/Cannon_control.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Ballistics/Cannon_control.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ballistics/QuadricDrag.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Ballistics/QuadricDrag.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ballistics/Round_shot.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Ballistics/Round_shot.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ballistics/TraectoryRender.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Ballistics/TraectoryRender.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +20,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/../AR_Praktika/Assets/Scripts/Spawner.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -27,22 +31,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\Victor\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
-      "C:\\Users\\Victor\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
-      "C:\\Users\\Victor\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\Victor\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\Victor\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\Victor\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.49f1\Editor\Unity.exe" />
@@ -91,7 +95,8 @@
       <updated>1758186924901</updated>
       <workItem from="1758186927506" duration="10000" />
       <workItem from="1758186965753" duration="258000" />
-      <workItem from="1758321395947" duration="2843000" />
+      <workItem from="1758321395947" duration="3176000" />
+      <workItem from="1758373841089" duration="5854000" />
     </task>
     <servers />
   </component>
