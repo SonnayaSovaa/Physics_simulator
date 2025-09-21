@@ -23,11 +23,11 @@ public class QuadricDrag : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 vReal = _rigidbody.linearVelocity - _wind;
-        
-        float speed = vReal.magnitude;
+        Vector3 vRel = _rigidbody.linearVelocity - _wind;
+        float speed = vRel.magnitude;
+        if (speed < 1e-6f) return;
 
-        Vector3 drag = -0.5f * _airDencity * _dragCoefficient * _area * speed * vReal;
+        Vector3 drag = -0.5f * _airDencity * _dragCoefficient * _area * speed * vRel;
         _rigidbody.AddForce(drag, ForceMode.Force);
     }
 
@@ -37,6 +37,7 @@ public class QuadricDrag : MonoBehaviour
     {
         _rigidbody.mass = mass;
         _rigidbody.useGravity = true;
+        _rigidbody.linearDamping = 0f;
         _rigidbody.linearVelocity = initialVelocity;
 
 

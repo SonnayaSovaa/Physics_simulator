@@ -118,6 +118,15 @@ public partial class @Cannon_control: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Inst"",
+                    ""type"": ""Button"",
+                    ""id"": ""18ed30b1-8830-4df9-b52b-4acbd78d1472"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -219,6 +228,17 @@ public partial class @Cannon_control: IInputActionCollection2, IDisposable
                     ""action"": ""Fire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""307bd4f8-ea3e-45c9-9a87-af239ef4caa6"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Inst"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -230,6 +250,7 @@ public partial class @Cannon_control: IInputActionCollection2, IDisposable
         m_Cannon_Moving = m_Cannon.FindAction("Moving", throwIfNotFound: true);
         m_Cannon_Yrotation = m_Cannon.FindAction("Y rotation", throwIfNotFound: true);
         m_Cannon_Fire = m_Cannon.FindAction("Fire", throwIfNotFound: true);
+        m_Cannon_Inst = m_Cannon.FindAction("Inst", throwIfNotFound: true);
     }
 
     ~@Cannon_control()
@@ -313,6 +334,7 @@ public partial class @Cannon_control: IInputActionCollection2, IDisposable
     private readonly InputAction m_Cannon_Moving;
     private readonly InputAction m_Cannon_Yrotation;
     private readonly InputAction m_Cannon_Fire;
+    private readonly InputAction m_Cannon_Inst;
     /// <summary>
     /// Provides access to input actions defined in input action map "Cannon".
     /// </summary>
@@ -336,6 +358,10 @@ public partial class @Cannon_control: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Cannon/Fire".
         /// </summary>
         public InputAction @Fire => m_Wrapper.m_Cannon_Fire;
+        /// <summary>
+        /// Provides access to the underlying input action "Cannon/Inst".
+        /// </summary>
+        public InputAction @Inst => m_Wrapper.m_Cannon_Inst;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -371,6 +397,9 @@ public partial class @Cannon_control: IInputActionCollection2, IDisposable
             @Fire.started += instance.OnFire;
             @Fire.performed += instance.OnFire;
             @Fire.canceled += instance.OnFire;
+            @Inst.started += instance.OnInst;
+            @Inst.performed += instance.OnInst;
+            @Inst.canceled += instance.OnInst;
         }
 
         /// <summary>
@@ -391,6 +420,9 @@ public partial class @Cannon_control: IInputActionCollection2, IDisposable
             @Fire.started -= instance.OnFire;
             @Fire.performed -= instance.OnFire;
             @Fire.canceled -= instance.OnFire;
+            @Inst.started -= instance.OnInst;
+            @Inst.performed -= instance.OnInst;
+            @Inst.canceled -= instance.OnInst;
         }
 
         /// <summary>
@@ -452,5 +484,12 @@ public partial class @Cannon_control: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnFire(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Inst" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnInst(InputAction.CallbackContext context);
     }
 }

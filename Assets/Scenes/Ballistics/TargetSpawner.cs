@@ -5,7 +5,7 @@ public class TargetSpawner : MonoBehaviour
     
     
 
-    void Create()
+    public void Create()
     {
         
     }

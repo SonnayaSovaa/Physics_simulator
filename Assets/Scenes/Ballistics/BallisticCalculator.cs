@@ -1,6 +1,8 @@
+using System;
 using UnityEngine;
 using System.Collections;
 using NUnit.Framework.Constraints;
+using Random = UnityEngine.Random;
 
 
 [RequireComponent(typeof(TraectoryRender))]
@@ -19,26 +21,27 @@ public class BallisticCalculator : MonoBehaviour
     
     [SerializeField] private GameObject _shootRound;
     
-    [SerializeField, Range(0.1f, 1f)] private float minRadius;
-    [SerializeField, Range(0.1f, 1.5f)] private float maxRadius;
+    [SerializeField, Range(0.1f, 0.5f)] private float minRadius;
+    [SerializeField, Range(0.1f, 0.5f)] private float maxRadius;
     
-    [SerializeField, Range(0.5f, 1f)] private float minMass;
-    [SerializeField, Range(0.6f, 2f)] private float maxMass;
+    [SerializeField, Range(0.1f, 1f)] private float minMass;
+    [SerializeField, Range(0.1f, 1f)] private float maxMass;
 
     private QuadricDrag quadricDrag;
 
     [SerializeField] private Statistic statistic;
 
-
-    private float _mass ;
-    private float _radius;
-    private float _dragCoefficient = 0.47f;
-    private float _airDencity=1.255f;
-    private Vector3 _wind= Vector3.zero;
+    
+    public float _mass ;
+    public float _radius;
+    [Header("--Air parameters--")]
+    [SerializeField] private float _dragCoefficient = 0.47f;
+    [SerializeField] private float _airDencity=1.255f;
+    [SerializeField] private Vector3 _wind= Vector3.zero;
     private Vector3 v0;
     
-    private Rigidbody _rigidbody;
 
+    private bool _instantiated = false;
    
 
     [SerializeField] private ParticleSystem boom;
@@ -49,40 +52,48 @@ public class BallisticCalculator : MonoBehaviour
         
         _control = new Cannon_control();
         _control.Cannon.Fire.started += ctx => Fire(v0);
+        _control.Cannon.Inst.started += ctx => ShootInstance();
+
         
         _traectoryRender = GetComponent<TraectoryRender>();
 
-
+        ShootInstance();
     }
 
     
 
     void Update()
     {
-        if (_launchPoint == null) return;
+        /*
 
+        _muzzleAngle = Vector3.Angle(transform.forward,
+            Vector3.ProjectOnPlane(transform.forward, Vector3.up));
+*/
         v0 = CalculateVelocity(_muzzleAngle);
         //_traectoryRender.DrawVacuum(_launchPoint.position, v0);
         
         
-
-        _traectoryRender.DrawReal(_launchPoint.position, _airDencity, _rigidbody,
-            _wind, _dragCoefficient, _radius * _radius * Mathf.PI, v0);
+        
+        _traectoryRender.DrawWithAir(_launchPoint.position, _airDencity,
+            _wind, _dragCoefficient, _radius , v0, _mass);
+        
 
     }
 
     void ShootInstance()
     {
-        //if (_shootRound == null) return;
-        GameObject newShootRound = Instantiate(_shootRound, _launchPoint.position, Quaternion.identity);
-        newShootRound.transform.parent = _launchPoint;
-        _rigidbody = newShootRound.GetComponent<Rigidbody>();
+        if (_instantiated) return;
+        GameObject newShootRound = Instantiate(_shootRound, _launchPoint.position, _launchPoint.rotation);
+     
+        
         
         
         quadricDrag = newShootRound.GetComponent<QuadricDrag>();
         
         _radius = Random.Range(minRadius, maxRadius);
         _mass = Random.Range(minMass, maxMass);
+        
+        _instantiated = true;
     }
     
     void Destroying()
@@ -93,17 +104,18 @@ public class BallisticCalculator : MonoBehaviour
 
     void Fire(Vector3 initialVelocity)
     {
+        
 
-        _rigidbody.transform.parent = null;
-        _rigidbody.isKinematic = false;
+        if (!_instantiated) return;
+        
         quadricDrag.SetPhysicalParams(_mass, _radius, _dragCoefficient, _airDencity, _wind, initialVelocity);
         //Debug.Log(_rigidbody.mass);
         boom.Play();
         
-        ShootInstance();
         Destroy(quadricDrag.gameObject, 5f);
         
         Invoke("Destroying", 5f);
+        _instantiated = false;
     }
 
     Vector3 CalculateVelocity(float angle)
