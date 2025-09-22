@@ -528,7 +528,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &822177984
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6320,7 +6320,7 @@ MonoBehaviour:
   statistic: {fileID: 1153717488}
   _mass: 0
   _radius: 0
-  _dragCoefficient: 0.4
+  _dragCoefficient: 0.47
   _airDencity: 1.255
   _wind: {x: 0, y: 0, z: 0}
   boom: {fileID: 1323353419}

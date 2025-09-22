@@ -1,3 +1,4 @@
+using UnityEditor.VersionControl;
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
@@ -47,6 +48,54 @@ public class TraectoryRender : MonoBehaviour
         
     }
     
+    
+    public void DrawNewAir(Transform start, float _airDencity, float angle,
+        Vector3 _wind, float _dragCoefficient, float radius,  Vector3 startVelocity, float mass)
+    {
+        Vector3 p = start.position;
+        Vector3 v = startVelocity;
+        _lineRenderer.positionCount = _pointCount;
+        float _area = radius * radius * Mathf.PI;
+
+        float g = Physics.gravity.y;
+        
+        float k = 0.5f * _airDencity * _dragCoefficient * _area;
+        k = 0.00000000001f;
+        
+        Vector3 vReal = startVelocity -_wind;
+        float speed = vReal.magnitude;
+        
+
+        for (int i = 0; i < _pointCount; i++)
+        {
+           
+            float t = i * _timeStep;
+            //float t = _timeStep;
+
+
+
+            float coef = 1- Mathf.Pow(2.718f, (-k * t / mass));
+
+            float vz = start.position.z + vReal.z* mass / k * coef;
+            float vy =start.position.y  -mass/k *(( vReal.y + g / k * mass) *coef -g*t);
+
+            
+            p = new Vector3(start.position.x, vy, vz);
+            //p *= t;
+            //Debug.Log(v+"    "+vz+"    "+vy);
+            Debug.Log(p);
+            
+            _lineRenderer.SetPosition(i, p);
+            
+            
+
+        }
+       // UnityEditor.EditorApplication.isPaused = true;  
+        
+    }
+    
+    
+    
     public void DrawWithAir(Vector3 startPosition, float _airDencity,
         Vector3 _wind, float _dragCoefficient, float radius,  Vector3 startVelocity, float mass)
     {
@@ -57,10 +106,11 @@ public class TraectoryRender : MonoBehaviour
 
         for (int i = 0; i < _pointCount; i++)
         {
+            
             _lineRenderer.SetPosition(i, p);
 
             // ускорение: g + Fd/m, Fd = -0.5*rho*Cd*A*|v_rel|*v_rel
-            Vector3 vReal = v -= _wind;
+            Vector3 vReal = v - _wind;
             float speed = vReal.magnitude;
             Vector3 drag = -0.5f * _airDencity * _dragCoefficient * _area * speed *vReal;
             Vector3 a = Physics.gravity + drag / mass;
@@ -103,6 +153,8 @@ public class TraectoryRender : MonoBehaviour
 
             newPosition = startPosition + t * startVelocity +
                                   t * t / 2 * Physics.gravity  + t * t*drag/2;
+            
+            
 
             
         }

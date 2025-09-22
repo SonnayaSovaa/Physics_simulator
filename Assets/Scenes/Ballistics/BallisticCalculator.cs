@@ -74,7 +74,10 @@ public class BallisticCalculator : MonoBehaviour
         
         
         
-        _traectoryRender.DrawWithAir(_launchPoint.position, _airDencity,
+       // _traectoryRender.DrawWithAir(_launchPoint.position, _airDencity,
+           // _wind, _dragCoefficient, _radius , v0, _mass);
+           
+           _traectoryRender.DrawNewAir(_launchPoint, _airDencity, _muzzleAngle,
             _wind, _dragCoefficient, _radius , v0, _mass);
         
 
