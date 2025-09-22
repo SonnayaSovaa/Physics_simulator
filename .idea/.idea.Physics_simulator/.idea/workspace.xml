@@ -7,7 +7,6 @@
     <list default="true" id="e79920c8-e050-4a6c-a50d-d61a269701a0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Physics_simulator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Physics_simulator/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ballistics/BallisticCalculator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Ballistics/BallisticCalculator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ballistics/Ballistics_Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Ballistics/Ballistics_Scene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ballistics/TraectoryRender.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Ballistics/TraectoryRender.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -99,7 +98,7 @@
       <workItem from="1758321395947" duration="3176000" />
       <workItem from="1758373841089" duration="21153000" />
       <workItem from="1758486276053" duration="10590000" />
-      <workItem from="1758568437304" duration="10699000" />
+      <workItem from="1758568437304" duration="14062000" />
     </task>
     <servers />
   </component>

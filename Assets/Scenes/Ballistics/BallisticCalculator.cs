@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using System.Collections;
 using NUnit.Framework.Constraints;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 
@@ -60,6 +61,11 @@ public class BallisticCalculator : MonoBehaviour
         ShootInstance();
     }
 
+    public void SetVelocity(Slider slider)
+    {
+        _muzzleVelocity = slider.value;
+    }
+
     
 
     void Update()
@@ -74,11 +80,9 @@ public class BallisticCalculator : MonoBehaviour
         
         
         
-       // _traectoryRender.DrawWithAir(_launchPoint.position, _airDencity,
-           // _wind, _dragCoefficient, _radius , v0, _mass);
+       // _traectoryRender.DrawWithAir(_launchPoint.position, _airDencity, _wind, _dragCoefficient, _radius , v0, _mass);
            
-           _traectoryRender.DrawNewAir(_launchPoint, _airDencity, _muzzleAngle,
-            _wind, _dragCoefficient, _radius , v0, _mass);
+         _traectoryRender.DrawNewAir(_launchPoint, _airDencity, _wind, _dragCoefficient, _radius , v0, _mass);
         
 
     }
@@ -87,8 +91,8 @@ public class BallisticCalculator : MonoBehaviour
     {
         if (_instantiated) return;
         GameObject newShootRound = Instantiate(_shootRound, _launchPoint.position, _launchPoint.rotation);
-     
-        
+
+        newShootRound.transform.parent = _launchPoint;
         
         
         quadricDrag = newShootRound.GetComponent<QuadricDrag>();
@@ -110,6 +114,7 @@ public class BallisticCalculator : MonoBehaviour
         
 
         if (!_instantiated) return;
+        quadricDrag.transform.parent = null;
         
         quadricDrag.SetPhysicalParams(_mass, _radius, _dragCoefficient, _airDencity, _wind, initialVelocity);
         //Debug.Log(_rigidbody.mass);

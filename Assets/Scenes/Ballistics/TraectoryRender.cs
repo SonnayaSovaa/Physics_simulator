@@ -1,4 +1,3 @@
-using UnityEditor.VersionControl;
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
@@ -16,6 +15,8 @@ public class TraectoryRender : MonoBehaviour
 
 
     private LineRenderer _lineRenderer;
+
+    //[SerializeField] private float k=0.01f;
 
     private void Awake() => InitialiseLineRenderer();
 
@@ -49,7 +50,7 @@ public class TraectoryRender : MonoBehaviour
     }
     
     
-    public void DrawNewAir(Transform start, float _airDencity, float angle,
+    public void DrawNewAir(Transform start, float _airDencity, 
         Vector3 _wind, float _dragCoefficient, float radius,  Vector3 startVelocity, float mass)
     {
         Vector3 p = start.position;
@@ -59,33 +60,46 @@ public class TraectoryRender : MonoBehaviour
 
         float g = Physics.gravity.y;
         
-        float k = 0.5f * _airDencity * _dragCoefficient * _area;
-        k = 0.00000000001f;
+        
+       
         
         Vector3 vReal = startVelocity -_wind;
         float speed = vReal.magnitude;
         
+        float k = 0.5f * _airDencity * _dragCoefficient * _area;
+
+        float vz = vReal.z;
+        float vy = vReal.y;
+        float vx = vReal.x;
+
+        //k = 0.5f;
 
         for (int i = 0; i < _pointCount; i++)
         {
-           
-            float t = i * _timeStep;
-            //float t = _timeStep;
-
-
-
-            float coef = 1- Mathf.Pow(2.718f, (-k * t / mass));
-
-            float vz = start.position.z + vReal.z* mass / k * coef;
-            float vy =start.position.y  -mass/k *(( vReal.y + g / k * mass) *coef -g*t);
-
+            _lineRenderer.SetPosition(i, p);
             
-            p = new Vector3(start.position.x, vy, vz);
+            //float t = i * _timeStep;
+            float t = _timeStep;
+
+
+
+            //float coef = 1- Mathf.Pow(2.718f, (-k * t / mass));
+
+            //float vz = start.position.z + vReal.z* mass / k * coef;
+            //float vy =start.position.y  -mass/k *(( vReal.y + g / k * mass) *coef -g*t);
+
+            vz = vz - k / mass * vz * t;
+            vy = vy + (g + k / mass * vy) * t;
+            vx += _wind.x/t*i / _pointCount;
+
+            p += new Vector3(vx, vy , vz )* t;
+            
+            //p = new Vector3(start.position.x, vy, vz);
             //p *= t;
             //Debug.Log(v+"    "+vz+"    "+vy);
-            Debug.Log(p);
+           
             
-            _lineRenderer.SetPosition(i, p);
+            
             
             
 
