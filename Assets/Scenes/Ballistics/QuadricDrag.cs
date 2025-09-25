@@ -12,13 +12,42 @@ public class QuadricDrag : MonoBehaviour
     private Rigidbody _rigidbody;
     private float _area;
 
-    void Awake()
+    private Statistic _statistic;
+
+    public void SetStats(Statistic statistic)
+    {
+        _statistic = statistic;
+    }
+
+    void OnEnable()
     {
         _rigidbody = GetComponent<Rigidbody>();
         
-        
+
     }
 
+    public void Hit()
+    {
+
+        _statistic.NewHit();
+        Destroy(gameObject);
+
+    }
+    
+    public void Delete()
+    {
+        Invoke("Miss", 5f);
+    }
+
+
+    void Miss()
+    {
+        if (this!=null)
+        {
+            _statistic.NewMiss();
+            Destroy(gameObject);
+        }
+    }
 
 
     void FixedUpdate()

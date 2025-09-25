@@ -6,8 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="e79920c8-e050-4a6c-a50d-d61a269701a0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Physics_simulator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Physics_simulator/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ballistics/1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Ballistics/1.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ballistics/BallisticCalculator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Ballistics/BallisticCalculator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ballistics/TraectoryRender.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Ballistics/TraectoryRender.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ballistics/Ballistics_Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Ballistics/Ballistics_Scene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ballistics/QuadricDrag.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Ballistics/QuadricDrag.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ballistics/Target.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Ballistics/Target.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ballistics/TargetSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Ballistics/TargetSpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Roboto-Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Roboto-Bold SDF.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +27,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/Ballistics/Statistic.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/Ballistics/Target.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/Ballistics/TargetSpawner.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scenes/Ballistics/TraectoryRender.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
@@ -98,7 +104,9 @@
       <workItem from="1758321395947" duration="3176000" />
       <workItem from="1758373841089" duration="21153000" />
       <workItem from="1758486276053" duration="10590000" />
-      <workItem from="1758568437304" duration="14062000" />
+      <workItem from="1758568437304" duration="14431000" />
+      <workItem from="1758831050811" duration="169000" />
+      <workItem from="1758831520970" duration="8118000" />
     </task>
     <servers />
   </component>

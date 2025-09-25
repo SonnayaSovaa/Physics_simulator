@@ -13,9 +13,9 @@ public class Target : MonoBehaviour
     [SerializeField, Range(0.5f, 5f)] private float minVelocity;
     [SerializeField, Range(0.5f, 5f)] private float maxVelocity;
 
-    private Rigidbody _rigidbody;
+    [SerializeField] private Collider[] colliders;
 
-    public Statistic statistic;
+    private Rigidbody _rigidbody;
 
     [SerializeField] private GameObject child;
     private Material mat;
@@ -23,11 +23,7 @@ public class Target : MonoBehaviour
     private TargetSpawner _spawner;
 
     [SerializeField] private ParticleSystem flares;
-
-    public void SetStats(Statistic statistic)
-    {
-        statistic = statistic;
-    }
+    
     
     public void SetSpawner(TargetSpawner spawner)
     {
@@ -36,15 +32,22 @@ public class Target : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<QuadricDrag>())
+        QuadricDrag quadricDrag = other.GetComponent<QuadricDrag>();
+        
+        if (quadricDrag)
         {
-            statistic.NewHit();
-
+            Destroy(colliders[0]);
+            Destroy(colliders[1]);
+            
             mat.color = Color.black;
             _rigidbody.isKinematic = true;
             flares.Play();
             _spawner.Create();
+
+            _rigidbody.isKinematic = true;
             
+            quadricDrag.Hit();
+
         }
         
     }
