@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class Target : MonoBehaviour
 {
@@ -40,7 +38,6 @@ public class Target : MonoBehaviour
             Destroy(colliders[1]);
             
             mat.color = Color.black;
-            _rigidbody.isKinematic = true;
             flares.Play();
             _spawner.Create();
 

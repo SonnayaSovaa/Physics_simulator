@@ -1,13 +1,9 @@
-using System;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class TargetSpawner : MonoBehaviour
 {
 
     [SerializeField] private GameObject target;
-    [SerializeField] private Statistic statistic;
-
     [SerializeField] private Transform[] bounds;
 
     private void Awake()
@@ -22,8 +18,6 @@ public class TargetSpawner : MonoBehaviour
         GameObject newTraget = Instantiate(target, GeneratePosition(), Quaternion.identity);
         Target targetComp = newTraget.GetComponent<Target>();
         targetComp.SetSpawner(this);
-       
-        //Invoke("Create", 2f);
     }
 
     Vector3 GeneratePosition()

@@ -16,7 +16,6 @@ public class TraectoryRender : MonoBehaviour
 
     private LineRenderer _lineRenderer;
 
-    //[SerializeField] private float k=0.01f;
 
     private void Awake() => InitialiseLineRenderer();
 
@@ -122,15 +121,14 @@ public class TraectoryRender : MonoBehaviour
         {
             
             _lineRenderer.SetPosition(i, p);
-
-            // ускорение: g + Fd/m, Fd = -0.5*rho*Cd*A*|v_rel|*v_rel
+            
             Vector3 vReal = v - _wind;
             float speed = vReal.magnitude;
             Vector3 drag = -0.5f * _airDencity * _dragCoefficient * _area * speed *vReal;
             Vector3 a = Physics.gravity + drag / mass;
 
-            v += a * _timeStep;  // шаг по скорости
-            p += v * _timeStep;  // шаг по позиции
+            v += a * _timeStep; 
+            p += v * _timeStep; 
 
 
         }
