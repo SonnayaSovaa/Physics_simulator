@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="e79920c8-e050-4a6c-a50d-d61a269701a0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Physics_simulator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Physics_simulator/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/AirPlane/AirPlane.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/AirPlane/AirPlane.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/AirPlane/JetEngine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/AirPlane/JetEngine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ballistics/BallisticCalculator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Ballistics/BallisticCalculator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ballistics/Ballistics_Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Ballistics/Ballistics_Scene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Roboto-Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Roboto-Bold SDF.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +105,7 @@
       <workItem from="1758831050811" duration="169000" />
       <workItem from="1758831520970" duration="10810000" />
       <workItem from="1759411602115" duration="4000" />
-      <workItem from="1759502506327" duration="6911000" />
+      <workItem from="1759502506327" duration="7693000" />
     </task>
     <servers />
   </component>

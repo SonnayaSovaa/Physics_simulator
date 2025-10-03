@@ -60,7 +60,7 @@ public class BallisticCalculator : MonoBehaviour
 
     public void SetVelocity(Slider slider)
     {
-        _muzzleVelocity = slider.value;
+        _muzzleVelocity = slider.value*1f;
     }
 
     
