@@ -6,28 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e79920c8-e050-4a6c-a50d-d61a269701a0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Physics_simulator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Physics_simulator/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/AirPlane/Act.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/AirPlane/Act.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/AirPlane/Act.inputactions" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/AirPlane/Act.inputactions.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/AirPlane/AirPlane.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/AirPlane/AirPlane.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/AirPlane/Gilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/AirPlane/Gilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ballistics/1.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ballistics/1.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ballistics/BallisticCalculator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Ballistics/BallisticCalculator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ballistics/CannonController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Ballistics/CannonController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ballistics/Cannon_control.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ballistics/Cannon_control.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ballistics/Cannon_control.inputactions" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ballistics/Cannon_control.inputactions.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Rotat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Rotat/FPScamera.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Rotat/FPScamera.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Rotat/QuadricSpeedController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Rotat/QuadricSpeedController.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Rotat/Rotat.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Rotat/Rotat.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Roboto-Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Roboto-Bold SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/AirPlane/JetEngine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/AirPlane/JetEngine.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +38,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -123,7 +104,7 @@
       <workItem from="1758831050811" duration="169000" />
       <workItem from="1758831520970" duration="10810000" />
       <workItem from="1759411602115" duration="4000" />
-      <workItem from="1759502506327" duration="5133000" />
+      <workItem from="1759502506327" duration="6911000" />
     </task>
     <servers />
   </component>

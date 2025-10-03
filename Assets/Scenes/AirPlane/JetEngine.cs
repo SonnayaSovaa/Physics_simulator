@@ -1,3 +1,4 @@
+using System;
 using UnityEngine.InputSystem;
 using UnityEngine;
 
@@ -34,6 +35,11 @@ public class JetEngine : MonoBehaviour
 
     private float _speedMS;
     private float _lastAppliedThrus;
+    
+    
+    private float  _startPos;
+
+    
 
     void Awake()
     {
@@ -41,6 +47,8 @@ public class JetEngine : MonoBehaviour
 
         _throttle01 = 0f;
         _afterBurener = false;
+        
+        
 
         InitializeActions();
     }
@@ -72,6 +80,11 @@ public class JetEngine : MonoBehaviour
 
     }
 
+    private void OnCollisionEnter(Collision other)
+    {
+        _startPos = transform.position.y;
+    }
+
     private void AdjustThrottle(float delta)
     {
         _throttle01 = Mathf.Clamp01(_throttle01 * delta);
@@ -83,6 +96,9 @@ public class JetEngine : MonoBehaviour
         _speedMS = _rigidBody.linearVelocity.magnitude;
 
         float dt = Time.fixedDeltaTime;
+
+        if (transform.position.y-0.1f > _startPos) _nozzle.localEulerAngles = Vector3.zero;
+        
 
 
         if (_throttleUpHold.IsPressed())

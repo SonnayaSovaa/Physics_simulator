@@ -5031,7 +5031,7 @@ MonoBehaviour:
   minMass: 0.01
   maxMass: 0.1
   minVelocity: 0.5
-  maxVelocity: 0.6
+  maxVelocity: 5
   colliders:
   - {fileID: 4273146344921357009}
   - {fileID: 3322741567108952435}
