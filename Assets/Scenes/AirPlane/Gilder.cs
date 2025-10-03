@@ -25,6 +25,8 @@ public class Gilder : MonoBehaviour
 
     private float _Cl, _CD, _qDyn, _Lmag, _Dmag, _qLideK;
 
+    [SerializeField] private Transform centerOfMass;
+
 
 
 
@@ -33,6 +35,7 @@ public class Gilder : MonoBehaviour
     void Awake()
     {
         _rigidBody = GetComponent<Rigidbody>();
+        _rigidBody.centerOfMass = centerOfMass.localPosition;
     }
 
     void FixedUpdate()
@@ -75,15 +78,7 @@ public class Gilder : MonoBehaviour
         _rigidBody.AddForceAtPosition(L + D, _wingCP.position, ForceMode.Force);
 
 
-
-
-
-
-
-
-
-
-
+        
         
 
 

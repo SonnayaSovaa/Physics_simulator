@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 
 public class BallisticCalculator : MonoBehaviour
 {
-    private Cannon_control _control;
+    private ActionMaps _control;
 
     [SerializeField] private Transform _launchPoint;
     [SerializeField] private float _muzzleVelocity=20f;
@@ -48,7 +48,7 @@ public class BallisticCalculator : MonoBehaviour
     {
         ShootInstance();
         
-        _control = new Cannon_control();
+        _control = new ActionMaps();
         _control.Cannon.Fire.started += ctx => Fire(v0);
         _control.Cannon.Inst.started += ctx => ShootInstance();
 

@@ -1,6 +1,6 @@
 {
     "version": 1,
-    "name": "Cannon_control",
+    "name": "ActionMaps",
     "maps": [
         {
             "name": "Cannon",
@@ -151,6 +151,114 @@
                     "processors": "",
                     "groups": "",
                     "action": "Inst",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Jet",
+            "id": "86671b2a-27a5-4b8d-aa12-41fcbf13581e",
+            "actions": [
+                {
+                    "name": "ThrottleUp",
+                    "type": "Button",
+                    "id": "fe6512a7-d1a6-44f5-bf54-06f002de63cc",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ThrottleDown",
+                    "type": "Button",
+                    "id": "dee5ab6d-e130-4336-9de9-aa5d7e91c7d6",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ThrottleStepUp",
+                    "type": "Button",
+                    "id": "38a33ad3-5a82-421c-b00e-d709c2fb7f5a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ThrottleStepDown",
+                    "type": "Button",
+                    "id": "2f1c7ad3-1354-4c9c-b0eb-fe1182167488",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ToggleAB",
+                    "type": "Button",
+                    "id": "2193620f-e2f8-49d2-a4d3-6adec6c031c7",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "fad78d69-1bf6-49bb-a0af-4b95e55adba7",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ThrottleUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b10e3891-251f-460e-8f79-107376ff1a9d",
+                    "path": "<Keyboard>/leftCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ThrottleDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d2343556-1be1-443c-8451-cc3eba3b28db",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ThrottleStepUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bb68e66e-68c1-4403-b653-b15e625c1129",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ThrottleStepDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "470b1f75-cf9c-4c82-8461-f178bc700994",
+                    "path": "<Keyboard>/leftAlt",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleAB",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

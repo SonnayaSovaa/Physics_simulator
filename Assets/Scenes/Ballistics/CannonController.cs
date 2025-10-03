@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CannonController : MonoBehaviour
 {
-    private Cannon_control _control;
+    private ActionMaps _control;
     private Vector2 _inputDir_XZ;
     private Vector2 _inputDir_Y;
     
@@ -17,7 +17,7 @@ public class CannonController : MonoBehaviour
 
     private void Awake()
     {
-        _control = new Cannon_control();
+        _control = new ActionMaps();
         _control.Cannon.Moving.started += ctx => OnMovement();
         _control.Cannon.Yrotation.started += ctx => MuzzleRotation();
 
