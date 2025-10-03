@@ -3,7 +3,7 @@ using System;
 
 [RequireComponent(typeof(Rigidbody))]
 
-public class Gilder : MonoBehaviour
+public class Glider : MonoBehaviour
 {
 
     [SerializeField] private Transform _wingCP;
@@ -106,9 +106,13 @@ public class Gilder : MonoBehaviour
 
     void OnGUI()
     {
+        GUIStyle style = new GUIStyle();
+        style.fontSize = 35;
         GUI.color = Color.black;
-        GUILayout.Label($"Speed: {_speedMS:0.0} m/s");
-        GUILayout.Label($"AoA: {_alphaRad*Mathf.Deg2Rad:0.0}");
+        GUILayout.Label($"Speed: {_speedMS:0.0} m/s", style);
+        GUILayout.Label($"AoA: {_alphaRad*Mathf.Rad2Deg:0.0}", style);
+        
+
 
     }
 

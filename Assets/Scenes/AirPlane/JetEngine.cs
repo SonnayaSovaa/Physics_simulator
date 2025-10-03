@@ -121,6 +121,21 @@ public class JetEngine : MonoBehaviour
         }
 
     }
+    
+    void OnGUI()
+    {
+        GUIStyle style = new GUIStyle();
+        style.fontSize = 35;
+        GUI.color = Color.black;
+        GUILayout.Label($" ", style);
+        GUILayout.Label($" ", style);
+
+        GUILayout.Label($"Burning: {_afterBurener}", style);
+        GUILayout.Label($"Throttle 01: {_throttle01:0.0}", style);
+        
+
+
+    }
 
 
 
