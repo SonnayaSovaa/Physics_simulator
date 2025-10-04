@@ -39,7 +39,11 @@ public class JetEngine : MonoBehaviour
     
     private float  _startPos;
 
-    
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag=="Floor")
+            _startPos = transform.position.y;
+    }
 
     void Awake()
     {
@@ -80,10 +84,7 @@ public class JetEngine : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision other)
-    {
-        _startPos = transform.position.y;
-    }
+
 
     private void AdjustThrottle(float delta)
     {
