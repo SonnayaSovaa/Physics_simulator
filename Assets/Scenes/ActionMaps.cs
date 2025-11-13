@@ -349,6 +349,94 @@ public partial class @ActionMaps: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Player"",
+            ""id"": ""282e5890-40c9-4928-b058-0843ecc7c21d"",
+            ""actions"": [
+                {
+                    ""name"": ""Yaw"",
+                    ""type"": ""Value"",
+                    ""id"": ""a7b883a9-ee99-4aef-8898-21045dce30ee"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Pitch"",
+                    ""type"": ""Value"",
+                    ""id"": ""1d1846ce-9903-4761-b2a4-3b93c6a6bda2"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Roll"",
+                    ""type"": ""Value"",
+                    ""id"": ""73d01989-4e5c-4780-a6b9-26af8f8111ad"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""HoldAttr"",
+                    ""type"": ""Button"",
+                    ""id"": ""c2b63b1c-2c5d-426a-af32-b9d27299caa3"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""346bc2da-231a-4fa4-88a0-058c52b371db"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Yaw"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5e7ea58a-dd2e-401d-9873-4be3d2e09ebe"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pitch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""73c8e087-ba17-4819-b38b-d6e27d0feb1e"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Roll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""53850836-afbf-4f1a-9180-8d3eeb533b43"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HoldAttr"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -366,12 +454,19 @@ public partial class @ActionMaps: IInputActionCollection2, IDisposable
         m_Jet_ThrottleStepUp = m_Jet.FindAction("ThrottleStepUp", throwIfNotFound: true);
         m_Jet_ThrottleStepDown = m_Jet.FindAction("ThrottleStepDown", throwIfNotFound: true);
         m_Jet_ToggleAB = m_Jet.FindAction("ToggleAB", throwIfNotFound: true);
+        // Player
+        m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
+        m_Player_Yaw = m_Player.FindAction("Yaw", throwIfNotFound: true);
+        m_Player_Pitch = m_Player.FindAction("Pitch", throwIfNotFound: true);
+        m_Player_Roll = m_Player.FindAction("Roll", throwIfNotFound: true);
+        m_Player_HoldAttr = m_Player.FindAction("HoldAttr", throwIfNotFound: true);
     }
 
     ~@ActionMaps()
     {
         UnityEngine.Debug.Assert(!m_Cannon.enabled, "This will cause a leak and performance issues, ActionMaps.Cannon.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Jet.enabled, "This will cause a leak and performance issues, ActionMaps.Jet.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, ActionMaps.Player.Disable() has not been called.");
     }
 
     /// <summary>
@@ -712,6 +807,135 @@ public partial class @ActionMaps: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="JetActions" /> instance referencing this action map.
     /// </summary>
     public JetActions @Jet => new JetActions(this);
+
+    // Player
+    private readonly InputActionMap m_Player;
+    private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
+    private readonly InputAction m_Player_Yaw;
+    private readonly InputAction m_Player_Pitch;
+    private readonly InputAction m_Player_Roll;
+    private readonly InputAction m_Player_HoldAttr;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "Player".
+    /// </summary>
+    public struct PlayerActions
+    {
+        private @ActionMaps m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public PlayerActions(@ActionMaps wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Yaw".
+        /// </summary>
+        public InputAction @Yaw => m_Wrapper.m_Player_Yaw;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Pitch".
+        /// </summary>
+        public InputAction @Pitch => m_Wrapper.m_Player_Pitch;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Roll".
+        /// </summary>
+        public InputAction @Roll => m_Wrapper.m_Player_Roll;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/HoldAttr".
+        /// </summary>
+        public InputAction @HoldAttr => m_Wrapper.m_Player_HoldAttr;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_Player; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="PlayerActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="PlayerActions" />
+        public void AddCallbacks(IPlayerActions instance)
+        {
+            if (instance == null || m_Wrapper.m_PlayerActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PlayerActionsCallbackInterfaces.Add(instance);
+            @Yaw.started += instance.OnYaw;
+            @Yaw.performed += instance.OnYaw;
+            @Yaw.canceled += instance.OnYaw;
+            @Pitch.started += instance.OnPitch;
+            @Pitch.performed += instance.OnPitch;
+            @Pitch.canceled += instance.OnPitch;
+            @Roll.started += instance.OnRoll;
+            @Roll.performed += instance.OnRoll;
+            @Roll.canceled += instance.OnRoll;
+            @HoldAttr.started += instance.OnHoldAttr;
+            @HoldAttr.performed += instance.OnHoldAttr;
+            @HoldAttr.canceled += instance.OnHoldAttr;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="PlayerActions" />
+        private void UnregisterCallbacks(IPlayerActions instance)
+        {
+            @Yaw.started -= instance.OnYaw;
+            @Yaw.performed -= instance.OnYaw;
+            @Yaw.canceled -= instance.OnYaw;
+            @Pitch.started -= instance.OnPitch;
+            @Pitch.performed -= instance.OnPitch;
+            @Pitch.canceled -= instance.OnPitch;
+            @Roll.started -= instance.OnRoll;
+            @Roll.performed -= instance.OnRoll;
+            @Roll.canceled -= instance.OnRoll;
+            @HoldAttr.started -= instance.OnHoldAttr;
+            @HoldAttr.performed -= instance.OnHoldAttr;
+            @HoldAttr.canceled -= instance.OnHoldAttr;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="PlayerActions.UnregisterCallbacks(IPlayerActions)" />.
+        /// </summary>
+        /// <seealso cref="PlayerActions.UnregisterCallbacks(IPlayerActions)" />
+        public void RemoveCallbacks(IPlayerActions instance)
+        {
+            if (m_Wrapper.m_PlayerActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="PlayerActions.AddCallbacks(IPlayerActions)" />
+        /// <seealso cref="PlayerActions.RemoveCallbacks(IPlayerActions)" />
+        /// <seealso cref="PlayerActions.UnregisterCallbacks(IPlayerActions)" />
+        public void SetCallbacks(IPlayerActions instance)
+        {
+            foreach (var item in m_Wrapper.m_PlayerActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_PlayerActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="PlayerActions" /> instance referencing this action map.
+    /// </summary>
+    public PlayerActions @Player => new PlayerActions(this);
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Cannon" which allows adding and removing callbacks.
     /// </summary>
@@ -790,5 +1014,41 @@ public partial class @ActionMaps: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnToggleAB(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Player" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="PlayerActions.AddCallbacks(IPlayerActions)" />
+    /// <seealso cref="PlayerActions.RemoveCallbacks(IPlayerActions)" />
+    public interface IPlayerActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "Yaw" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnYaw(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Pitch" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPitch(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Roll" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnRoll(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "HoldAttr" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnHoldAttr(InputAction.CallbackContext context);
     }
 }

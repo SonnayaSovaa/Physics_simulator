@@ -263,6 +263,94 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Player",
+            "id": "282e5890-40c9-4928-b058-0843ecc7c21d",
+            "actions": [
+                {
+                    "name": "Yaw",
+                    "type": "Value",
+                    "id": "a7b883a9-ee99-4aef-8898-21045dce30ee",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Pitch",
+                    "type": "Value",
+                    "id": "1d1846ce-9903-4761-b2a4-3b93c6a6bda2",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Roll",
+                    "type": "Value",
+                    "id": "73d01989-4e5c-4780-a6b9-26af8f8111ad",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "HoldAttr",
+                    "type": "Button",
+                    "id": "c2b63b1c-2c5d-426a-af32-b9d27299caa3",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "346bc2da-231a-4fa4-88a0-058c52b371db",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Yaw",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5e7ea58a-dd2e-401d-9873-4be3d2e09ebe",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pitch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "73c8e087-ba17-4819-b38b-d6e27d0feb1e",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Roll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "53850836-afbf-4f1a-9180-8d3eeb533b43",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HoldAttr",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
