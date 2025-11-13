@@ -5974,10 +5974,9 @@ GameObject:
   - component: {fileID: 6695480565777936802}
   - component: {fileID: 8046257018974626204}
   - component: {fileID: 2816798960751585457}
-  - component: {fileID: 3836467981729711004}
-  - component: {fileID: 1089824262926735101}
-  - component: {fileID: 6432626626657789353}
   - component: {fileID: 8046257018974626205}
+  - component: {fileID: 8046257018974626207}
+  - component: {fileID: 8046257018974626206}
   m_Layer: 0
   m_Name: fuselage
   m_TagString: Untagged
@@ -6067,24 +6066,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1089824262926735101
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 268203126669543592}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aefe98edc3c32264890161ac8e02e280, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _nozzle: {fileID: 6136919986342008365}
-  _thrustDrySL: 79000
-  _thrustABSL: 129000
-  _throttleRate: 1
-  _throttleStep: 0.05
-  actions: {fileID: -944628639613478452, guid: e1faec2544055684fabb0e9867f35077, type: 3}
 --- !u!33 &1399167594193416037
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -6301,25 +6282,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &3836467981729711004
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 268203126669543592}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11ff49f39e5d620478cbea2cc2b5e179, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _wingCP: {fileID: 5115720564621330861}
-  _airDencity: 1.225
-  _wingArea: 43.55
-  _wingAspect: 7.59
-  _wingCDO: 0.02
-  _wingLapLha: 5.5
-  centerOfMass: {fileID: 1751068592112226346}
 --- !u!1 &3958045408915105249
 GameObject:
   m_ObjectHideFlags: 0
@@ -6466,25 +6428,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &6432626626657789353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 268203126669543592}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11ff49f39e5d620478cbea2cc2b5e179, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _wingCP: {fileID: 1439468531864666799}
-  _airDencity: 1.225
-  _wingArea: 27.96
-  _wingAspect: 4.87
-  _wingCDO: 0.02
-  _wingLapLha: 5.5
-  centerOfMass: {fileID: 1751068592112226346}
 --- !u!23 &6695480565777936802
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6564,12 +6507,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerInput: {fileID: -944628639613478452, guid: e1faec2544055684fabb0e9867f35077, type: 3}
+  _flightProtection: {fileID: 8046257018974626206}
   _kp: {x: 30, y: 20, z: 30}
   _kd: {x: 0.8, y: 0.6, z: 0.9}
   _maxTorque: {x: 30, y: 25, z: 35}
   _deadZone: 0.05
   _attHoldKp: {x: 2, y: 2}
   _attHoldMaxRate: 45
+--- !u!114 &8046257018974626206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268203126669543592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10607f9811745aa4e9d346dfcfdd3ab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _flightController: {fileID: 8046257018974626205}
+  _flightStateLight: {fileID: 8046257018974626207}
+  _aoaHard: 14
+  _aoaSoft: 18
+  _gPos: 9
+  _gNeg: -3
+  _gBlend: 1
+  StallAoa: 17
+  StallFade: 3
+  _useTurb: 0
+  _turbTorque: 8
+  _turbForce: 150
+  _turbFilter: 2
+--- !u!114 &8046257018974626207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268203126669543592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdc76d215956f2e48a9bd3630a238911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wingChord: {fileID: 4740045248175441948}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

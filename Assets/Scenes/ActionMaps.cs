@@ -437,6 +437,78 @@ public partial class @ActionMaps: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Kart"",
+            ""id"": ""ca0193b1-9044-450b-88ec-316336f56888"",
+            ""actions"": [
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""7ae6e1c1-98ff-40cc-af20-96aef6046e21"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""46c64ee7-3a51-4791-aa8a-213a6d0c55a5"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""1f2b59c4-9588-4025-a855-9d3fb67542aa"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""a8022bb5-4d3d-46a4-b844-b2d6dde3975f"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""5c050cda-3f44-4566-9cd9-08355dda012b"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""ba812980-2a71-4149-b635-6da3dbf9c5ed"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -460,6 +532,9 @@ public partial class @ActionMaps: IInputActionCollection2, IDisposable
         m_Player_Pitch = m_Player.FindAction("Pitch", throwIfNotFound: true);
         m_Player_Roll = m_Player.FindAction("Roll", throwIfNotFound: true);
         m_Player_HoldAttr = m_Player.FindAction("HoldAttr", throwIfNotFound: true);
+        // Kart
+        m_Kart = asset.FindActionMap("Kart", throwIfNotFound: true);
+        m_Kart_Move = m_Kart.FindAction("Move", throwIfNotFound: true);
     }
 
     ~@ActionMaps()
@@ -467,6 +542,7 @@ public partial class @ActionMaps: IInputActionCollection2, IDisposable
         UnityEngine.Debug.Assert(!m_Cannon.enabled, "This will cause a leak and performance issues, ActionMaps.Cannon.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Jet.enabled, "This will cause a leak and performance issues, ActionMaps.Jet.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, ActionMaps.Player.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Kart.enabled, "This will cause a leak and performance issues, ActionMaps.Kart.Disable() has not been called.");
     }
 
     /// <summary>
@@ -936,6 +1012,102 @@ public partial class @ActionMaps: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="PlayerActions" /> instance referencing this action map.
     /// </summary>
     public PlayerActions @Player => new PlayerActions(this);
+
+    // Kart
+    private readonly InputActionMap m_Kart;
+    private List<IKartActions> m_KartActionsCallbackInterfaces = new List<IKartActions>();
+    private readonly InputAction m_Kart_Move;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "Kart".
+    /// </summary>
+    public struct KartActions
+    {
+        private @ActionMaps m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public KartActions(@ActionMaps wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "Kart/Move".
+        /// </summary>
+        public InputAction @Move => m_Wrapper.m_Kart_Move;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_Kart; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="KartActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(KartActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="KartActions" />
+        public void AddCallbacks(IKartActions instance)
+        {
+            if (instance == null || m_Wrapper.m_KartActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_KartActionsCallbackInterfaces.Add(instance);
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="KartActions" />
+        private void UnregisterCallbacks(IKartActions instance)
+        {
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="KartActions.UnregisterCallbacks(IKartActions)" />.
+        /// </summary>
+        /// <seealso cref="KartActions.UnregisterCallbacks(IKartActions)" />
+        public void RemoveCallbacks(IKartActions instance)
+        {
+            if (m_Wrapper.m_KartActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="KartActions.AddCallbacks(IKartActions)" />
+        /// <seealso cref="KartActions.RemoveCallbacks(IKartActions)" />
+        /// <seealso cref="KartActions.UnregisterCallbacks(IKartActions)" />
+        public void SetCallbacks(IKartActions instance)
+        {
+            foreach (var item in m_Wrapper.m_KartActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_KartActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="KartActions" /> instance referencing this action map.
+    /// </summary>
+    public KartActions @Kart => new KartActions(this);
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Cannon" which allows adding and removing callbacks.
     /// </summary>
@@ -1050,5 +1222,20 @@ public partial class @ActionMaps: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnHoldAttr(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Kart" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="KartActions.AddCallbacks(IKartActions)" />
+    /// <seealso cref="KartActions.RemoveCallbacks(IKartActions)" />
+    public interface IKartActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "Move" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMove(InputAction.CallbackContext context);
     }
 }
