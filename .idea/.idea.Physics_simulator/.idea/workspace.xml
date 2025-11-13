@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e79920c8-e050-4a6c-a50d-d61a269701a0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Physics_simulator/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Physics_simulator/.idea/projectSettingsUpdater.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Physics_simulator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Physics_simulator/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ActionMaps.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ActionMaps.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ActionMaps.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ActionMaps.inputactions" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/AirPlane/AirPlane.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/AirPlane/AirPlane.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/AirPlane/FlightController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/AirPlane/FlightController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,12 +17,12 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/../AR_Praktika/Assets/Scripts/Spawner.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/AirPlane/Glider.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/Ballistics/Statistic.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/Ballistics/Target.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/Ballistics/TargetSpawner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/Ballistics/TraectoryRender.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scenes/FlightStateLight.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
@@ -108,7 +105,7 @@
       <workItem from="1758831520970" duration="10810000" />
       <workItem from="1759411602115" duration="4000" />
       <workItem from="1759502506327" duration="9106000" />
-      <workItem from="1763020325761" duration="4410000" />
+      <workItem from="1763020325761" duration="11822000" />
     </task>
     <servers />
   </component>

@@ -7,8 +7,8 @@ using UnityEngine.InputSystem;
 
 public class FlightController : MonoBehaviour
 {
-   [SerializeField]
-   private InputActionAsset _playerInput;
+   [SerializeField] private InputActionAsset _playerInput;
+   [SerializeField] private FlightProtection _flightProtection;
 
    private Vector3 _maxRateDeg = new Vector3(90, 90, 120);
    [SerializeField] private Vector3 _kp = new Vector3(3, 2, 3);
@@ -24,6 +24,8 @@ public class FlightController : MonoBehaviour
    private InputAction _pitch;
    private InputAction _roll;
    private InputAction _hold;
+   
+   
 
    private float _targetPitchDeg;
    private float _targetRollDeg;
@@ -122,6 +124,8 @@ private (float xPitch, float zRoll) GetLocalPitchRollDeg()
 
       if (_isHolding) rateCmdDeg = GenerateHoldRateDeg();
 
+      rateCmdDeg = _flightProtection.ApplyLimiters(rateCmdDeg);
+
       Vector3 errDeg = rateCmdDeg - _omegaBodyDeg;
 
       Vector3 tau = new Vector3(
@@ -144,8 +148,12 @@ private (float xPitch, float zRoll) GetLocalPitchRollDeg()
       GUILayout.BeginArea(new Rect(12, 220, 420, 220));
       GUIStyle style = new GUIStyle();
       style.fontSize = 35;
-      GUILayout.Label("FlightController");
-      GUILayout.Label($"p={_omegaBodyDeg.x:0}");
+      GUILayout.Label("FlightController", style);
+      GUILayout.Label($"p={_omegaBodyDeg.x:0}", style);
+      GUILayout.Label($"АоА={_flightProtection.AoAWarn}", style);
+      GUILayout.Label($"G={_flightProtection.GWarn}", style);
+      GUILayout.Label($"Stall={_flightProtection.Stall}", style);
+
       GUILayout.EndArea();
    }
 }
