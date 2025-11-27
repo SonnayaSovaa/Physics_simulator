@@ -636,6 +636,7 @@ GameObject:
   - component: {fileID: 692740271}
   - component: {fileID: 692740276}
   - component: {fileID: 692740275}
+  - component: {fileID: 692740278}
   - component: {fileID: 692740277}
   m_Layer: 0
   m_Name: Cube
@@ -757,6 +758,9 @@ MonoBehaviour:
   _frontAxisShare: 0.5
   engineTorque: 400
   wheelRadius: 0.3
+  engine: {fileID: 692740278}
+  gearRatio: 8
+  drivetrainEfficency: 0.9
   maxSpeed: 20
   maxSteeringAngle: 30
   frictionCoefficient: 1
@@ -770,7 +774,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 692740270}
   serializedVersion: 4
-  m_Mass: 80
+  m_Mass: 1000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -810,6 +814,45 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.4309245, y: 0.24566443, z: 1.2654107}
   m_Center: {x: 0, y: -1.0927668, z: 0.07298691}
+--- !u!114 &692740278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692740270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53f92ae12c0d8de4ca4183129c740b3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxTorque: 400
+  idleRpm: 1000
+  maxRpm: 8000
+  torqueCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1000
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 8000
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &755690477
 GameObject:
   m_ObjectHideFlags: 0

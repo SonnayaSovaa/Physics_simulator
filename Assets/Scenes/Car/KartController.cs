@@ -16,7 +16,7 @@ public class KartController : MonoBehaviour
    [SerializeField, Range(0, 1)] private float _frontAxisShare = 0.5f;
    private InputAction _moveAction;
 
-   private float _throttleinput;
+   private float _throttleInput;
    private float _steerInput;
 
    private float _frontLeftNormalForce, _frontRightNormalForce, _rearLeftNormalForce, _rearRightNormalForce;
@@ -27,6 +27,9 @@ public class KartController : MonoBehaviour
 
    [SerializeField] private float engineTorque = 400f; // N*m
    [SerializeField] private float wheelRadius = 0.3f;
+   [SerializeField] private KartEngine engine;
+   [SerializeField] private float gearRatio =8f;
+   [SerializeField] private float drivetrainEfficency =0.9f;
    [SerializeField] private float maxSpeed = 20;
 
    [SerializeField] private float maxSteeringAngle;
@@ -89,7 +92,7 @@ public class KartController : MonoBehaviour
    {
       Vector2 move = _moveAction.ReadValue<Vector2>();
       _steerInput = Mathf.Clamp(move.x, -1, 1);
-      _throttleinput = Mathf.Clamp(move.y, -1, 1);
+      _throttleInput = Mathf.Clamp(move.y, -1, 1);
 
    }
 
@@ -112,9 +115,9 @@ public class KartController : MonoBehaviour
       Vector3 forward = transform.forward;
       float speedAlongForward = Vector3.Dot(_rigidbody.linearVelocity, forward);
 
-      if (_throttleinput > 0 && speedAlongForward > maxSpeed) return;
+      if (_throttleInput > 0 && speedAlongForward > maxSpeed) return;
 
-      float driveTorque = engineTorque * _throttleinput;
+      float driveTorque = engine.Simulate(_throttleInput, speedAlongForward, gearRatio, wheelRadius, Time.fixedDeltaTime);
 
       float driveForcePerWheel = driveTorque / wheelRadius / 2;
 
@@ -155,12 +158,14 @@ public class KartController : MonoBehaviour
       {
          Vector3 bodyForward = transform.forward;
          float speedAlongForward = Vector3.Dot(_rigidbody.linearVelocity, bodyForward);
-         if (!(_throttleinput > 0) && speedAlongForward > maxSpeed)
+         if (!(_throttleInput > 0) && speedAlongForward > maxSpeed)
          {
-            float driveTorque = engineTorque * _throttleinput;
-            float driveFroce = driveTorque / wheelRadius;
+                float engineTorque = engine.Simulate(_throttleInput, speedAlongForward, gearRatio, wheelRadius, Time.fixedDeltaTime) * _throttleInput;
 
-            Fx += driveFroce;
+                float totalWheelTorque = engineTorque * gearRatio * drivetrainEfficency;
+                float wheelTorque = totalWheelTorque / 2;
+
+                Fx += wheelTorque;
          }
          float rolling = -rollingResistance * vlong;
          Fy += rolling;
