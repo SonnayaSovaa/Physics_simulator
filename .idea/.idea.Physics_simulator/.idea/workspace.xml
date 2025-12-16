@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e79920c8-e050-4a6c-a50d-d61a269701a0" name="Changes" comment="" />
+    <list default="true" id="e79920c8-e050-4a6c-a50d-d61a269701a0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Car/KartAero.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Car/KartAero.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,6 +21,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/Ballistics/Target.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/Ballistics/TargetSpawner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/Ballistics/TraectoryRender.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scenes/Car/CarSuspension.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/Car/KartAero.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
@@ -103,7 +106,7 @@
       <workItem from="1759411602115" duration="4000" />
       <workItem from="1759502506327" duration="9106000" />
       <workItem from="1763020325761" duration="22601000" />
-      <workItem from="1765921676169" duration="933000" />
+      <workItem from="1765921676169" duration="1248000" />
     </task>
     <servers />
   </component>

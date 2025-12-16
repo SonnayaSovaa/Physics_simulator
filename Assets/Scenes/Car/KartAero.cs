@@ -47,7 +47,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     {
         if (rearWing == null) return;
 
-        float speed = rb.velocity.magnitude;
+        float speed = rb.linearVelocity.magnitude;
         if (speed < 0.01f) return;
 
         float alphaRad = wingAngleDeg * Mathf.Deg2Rad;
@@ -69,7 +69,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
     private void ApplyDrag()
     {
-        Vector3 v = rb.velocity;
+        Vector3 v = rb.linearVelocity;
         float speed = v.magnitude;
 
         if (speed < 0.01f)
