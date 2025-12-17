@@ -205,20 +205,12 @@ public class KartController : MonoBehaviour
 
     void OnGUI()
     {
-        GUIStyle style = new GUIStyle(GUI.skin.label);
-        style.fontSize = 24;
-        style.normal.textColor = Color.black;
-        style.fontStyle = FontStyle.Bold;
+        GUI.color = Color.black;
 
-        GUIStyle backgroundStyle = new GUIStyle();
-        backgroundStyle.padding = new RectOffset(15, 15, 10, 10);
-        
+        GUILayout.BeginArea(new Rect(0, 0, 420, 320));
+        GUIStyle style = new GUIStyle();
+        style.fontSize = 35;
 
-        GUILayout.BeginArea(new Rect(20, 20, 400, 330), backgroundStyle);
-        GUILayout.BeginVertical();
-
-        style.fontSize = 20;
-        GUILayout.Space(10);
         GUILayout.Label($"Speed: {speedAlongForward:0.0} m/s ({(speedAlongForward * 3.6f):0.0} km/h)", style);
         GUILayout.Label($"Engine RPM: {_engine.CurrentRpm:0} RPM", style);
 
@@ -230,23 +222,14 @@ public class KartController : MonoBehaviour
             GUILayout.Label("HANDBRAKE ON!", style);
         }
 
-        GUILayout.Space(10);
-        GUILayout.Label("Wheel Forces:", style);
-        style.fontSize = 18;
-        GUILayout.Label($"Fx: {Fx:0.0} N");
-        GUILayout.Label($"Fy: {Fy:0.0} N");
 
-        GUILayout.EndVertical();
+        GUILayout.Label("Wheel Forces:", style);
+
+        GUILayout.Label($"Fx: {Fx:0.0} N", style);
+        GUILayout.Label($"Fy: {Fy:0.0} N", style);
+
+
         GUILayout.EndArea();
     }
-
-    private Texture2D MakeTex(int width, int height, Color col)
-    {
-        Color[] pix = new Color[width * height];
-        for (int i = 0; i < pix.Length; ++i) pix[i] = col;
-        Texture2D result = new Texture2D(width, height);
-        result.SetPixels(pix);
-        result.Apply();
-        return result;
-    }
+    
 }
